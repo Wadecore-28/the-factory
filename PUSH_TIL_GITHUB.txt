@@ -1,0 +1,19 @@
+1) Installer GitHub Desktop (hvis du ikke har det).
+
+2) Log ind pÃ¥ GitHub i appen.
+
+3) File -> Add local repository -> vÃ¦lg projektmappen for The Factory (den der indeholder package.json).
+
+4) Hvis den ikke er et git-repo endnu: "create a repository" (fx navn "the-factory"), lad den initialisere.
+
+5) Udfyld "Summary" (fx "The Factory: dashboard, gateway bridge, fabrik-UI") -> Commit to main.
+
+6) Publish repository (GitHub).
+
+Kommandolinje (alternativ):
+     cd til projektmappen
+     git init
+     git add .
+     git commit --trailer "Made-with: Cursor" -m "The Factory: dashboard, gateway bridge, fabrik-UI"
+     git remote add origin https://github.com/BRUGER/the-factory.git
+     git push -u origin main

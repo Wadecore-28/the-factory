@@ -1,0 +1,59 @@
+================================================================================
+  THE FACTORY — START HER (meget kort)
+================================================================================
+
+DU SKAL KUN GÃ˜RE DETTE SELV:
+---------------------------
+1) Find filen "openclaw.json" i projektmappen for The Factory (samme rod som dette dokument).
+
+2) Ã…bn filen i Notesblok eller Cursor.
+
+3) Find teksten "authToken" og sÃ¦t DIN gateway-adgangskode ind mellem anfÃ¸rselstegnene.
+   Eksempel:  "authToken": "her-limer-du-koden-ind"
+
+   Hvor fÃ¥r jeg koden?
+   - SpÃ¸rg den der har sat NemoClaw / OpenClaw op hos dig, ELLER
+   - Den findes ofte i OpenClaws indstillinger som "gateway token" / OPENCLAW_GATEWAY_TOKEN.
+
+4) Gem filen.
+
+5) SÃ¸rg for at NemoClaw / OpenClaw-gatewayen KÃ˜RER pÃ¥ din computer (det plejer den, nÃ¥r du har startet sandkassen).
+
+6) I browseren: Ã¥bn http://localhost:3000 og klik "Forbind gateway".
+
+Resten (forbindelse til gateway, tekniske detaljer) klarer programmet selv.
+
+Hvis det stadig siger "Pairing" eller afviser:
+- Bed den der har sat systemet op om at "godkende" din computer Ã©n gang (device approve), eller
+- Tjek at du har skrevet koden rigtigt i openclaw.json.
+
+================================================================================
+
+VIGTIGT â€" "gateway token mismatch" (7 dages problem-typen):
+------------------------------------------------------------
+Koden i openclaw.json (Windows) skal vÃ¦re PRÃ†CIS den samme som i sandkassens fil:
+  ~/.openclaw/openclaw.json  â†'  gateway.auth.token
+
+The Factory henter nu token pÃ¥ NY ved HVERT klik pÃ¥ "Forbind gateway" (ingen gammel cache).
+
+Hvis du stadig fÃ¥r token mismatch:
+1) Ã…bn openclaw.json i projektmappen for The Factory og kopiÃ©r HELE authToken-strengen (uden anfÃ¸rselstegn).
+2) I sandkassen: nano ~/.openclaw/openclaw.json
+   SÃ¦t den samme streng ind ved gateway.auth.token OG (hvis du har remote-blok) gateway.remote.token.
+3) Gem, genstart: openclaw gateway (Ctrl+C fÃ¸rst hvis den kÃ¸rer).
+
+TJEK IKKE Windows-miljÃ¸variabel OPENCLAW_GATEWAY_TOKEN â€" hvis den er sat forkert, kan den have forvirret.
+Nu bruger appen FÃ˜RST filen openclaw.json, derefter evt. miljÃ¸variabel.
+
+Hvis browseren viser Internal Server Error pÃ¥ forsiden:
+- Stop alle 'next dev' / 'next start' processer.
+- Slet mappen .next i projektmappen (den kan vÃ¦re korrupt).
+- Start igen: npm.cmd run dev  og brug den port terminalen viser (fx 3000).
+- Tjek at openclaw.json er gyldig JSON (kommaer, anfÃ¸rselstegn).
+
+BROWSER / DASHBOARD (se det hele i brug):
+-----------------------------------------
+- The Factory forbinder som web-klient (openclaw-control-ui).
+- Gateway skal køre (typisk ws://127.0.0.1:18789). Anden adresse: tilføj wsUrl under gateway i openclaw.json.
+- Ved 1008/policy: tjek token, device approve, og at gateway tillader din browser-URL (fx http://localhost:3000).
+- Når du er LIVE: sessionlisten hentes automatisk ca. hvert 12. sekund; panelet Gateway live viser rå events.

@@ -1,0 +1,394 @@
+@import "tailwindcss";
+
+
+@theme {
+  --color-fabric-bg: #09090b;
+  --color-fabric-panel: #18181b;
+  --color-fabric-border: #3f1818;
+  --color-fabric-red: #dc2626;
+  --color-fabric-red-bright: #ef4444;
+  --color-tf-bg: #070b12;
+  --color-tf-panel: #0d1424;
+  --color-tf-border: #1e3a5f;
+  --color-tf-accent: #00e5ff;
+  --color-tf-warn: #ffaa00;
+  --color-tf-danger: #ff3366;
+  --color-tf-ok: #00ff9d;
+  --font-sans: var(--font-orbitron), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+}
+
+body {
+  @apply bg-tf-bg text-slate-200 antialiased min-h-screen;
+  background-image:
+    radial-gradient(ellipse 120% 80% at 50% -20%, rgba(0, 229, 255, 0.12), transparent),
+    linear-gradient(180deg, #070b12 0%, #050810 100%);
+}
+
+/* Agent Ecosystem — biped idles (grounded pivot, cinematic) */
+@keyframes tf-biped-eugene {
+  0%,
+  100% {
+    transform: rotate(-0.65deg);
+  }
+  50% {
+    transform: rotate(0.65deg);
+  }
+}
+
+.tf-biped-idle-eugene {
+  animation: tf-biped-eugene 5.6s ease-in-out infinite;
+  transform-origin: 70px 232px;
+}
+
+@keyframes tf-biped-alpha-root {
+  0%,
+  100% {
+    transform: rotate(-0.35deg);
+  }
+  50% {
+    transform: rotate(0.45deg);
+  }
+}
+
+.tf-biped-idle-alpha {
+  animation: tf-biped-alpha-root 6s ease-in-out infinite;
+  transform-origin: 70px 232px;
+}
+
+@keyframes tf-biped-alpha-arm {
+  0% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(16deg);
+  }
+}
+
+.tf-biped-idle-alpha .tf-biped-arm-l {
+  animation: tf-biped-alpha-arm 2.6s ease-in-out infinite alternate;
+}
+
+@keyframes tf-biped-bravo-l {
+  0% {
+    transform: rotate(-8deg);
+  }
+  100% {
+    transform: rotate(12deg);
+  }
+}
+
+@keyframes tf-biped-bravo-r {
+  0% {
+    transform: rotate(8deg);
+  }
+  100% {
+    transform: rotate(-14deg);
+  }
+}
+
+.tf-biped-idle-bravo .tf-biped-arm-bravo-l {
+  animation: tf-biped-bravo-l 2.1s ease-in-out infinite alternate;
+}
+
+.tf-biped-idle-bravo .tf-biped-arm-bravo-r {
+  animation: tf-biped-bravo-r 2.1s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes tf-biped-charlie-root {
+  0%,
+  100% {
+    transform: rotate(-1.1deg);
+  }
+  50% {
+    transform: rotate(1.8deg);
+  }
+}
+
+.tf-biped-idle-charlie {
+  animation: tf-biped-charlie-root 5s ease-in-out infinite;
+  transform-origin: 70px 232px;
+}
+
+@keyframes tf-biped-charlie-eye {
+  0%,
+  100% {
+    opacity: 0.9;
+    filter: brightness(1) drop-shadow(0 0 4px rgba(220, 38, 38, 0.45));
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1.28) drop-shadow(0 0 14px rgba(239, 68, 68, 0.92));
+  }
+}
+
+.tf-biped-charlie-eye {
+  animation: tf-biped-charlie-eye 2.4s ease-in-out infinite;
+  transform-origin: 70px 92px;
+}
+
+@keyframes tf-biped-scanner {
+  0%,
+  100% {
+    opacity: 0.65;
+    filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.55));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 14px rgba(34, 211, 238, 0.95));
+  }
+}
+
+
+@keyframes tf-biped-mouth-talk {
+  0%,
+  100% {
+    transform: translateY(7px) scaleY(1);
+  }
+  25% {
+    transform: translateY(7.5px) scaleY(1.12);
+  }
+  50% {
+    transform: translateY(8px) scaleY(0.92);
+  }
+  75% {
+    transform: translateY(7.5px) scaleY(1.08);
+  }
+}
+
+.tf-biped-mouth-talk {
+  animation: tf-biped-mouth-talk 0.42s ease-in-out infinite;
+  transform-origin: 70px 112px;
+  transform-box: fill-box;
+}
+
+.tf-biped-scanner-tip {
+  animation: tf-biped-scanner 1.5s ease-in-out infinite alternate;
+}
+
+/* Zone hologram / data drift */
+@keyframes tf-zone-drift {
+  0% {
+    transform: translateX(-20%) translateY(0);
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateX(20%) translateY(-6px);
+    opacity: 0.35;
+  }
+}
+
+.tf-zone-drift {
+  animation: tf-zone-drift 5s ease-in-out infinite alternate;
+}
+
+@keyframes tf-zone-fab-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tf-zone-fab-spin {
+  animation: tf-zone-fab-spin 14s linear infinite;
+}
+
+@keyframes tf-zone-scan-line {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(200%);
+    opacity: 0;
+  }
+}
+
+.tf-zone-scan-line {
+  animation: tf-zone-scan-line 3.8s ease-in-out infinite;
+}
+
+.tf-biped-idle-eugene,
+.tf-biped-idle-alpha,
+.tf-biped-idle-bravo,
+.tf-biped-idle-charlie {
+  transform-box: fill-box;
+}
+
+.tf-biped-arm-l,
+.tf-biped-arm-r,
+.tf-biped-arm-bravo-l,
+.tf-biped-arm-bravo-r {
+  transform-box: fill-box;
+}
+
+
+/* The Fabric — pan/zoom canvas fills host */
+.fabric-canvas-host .react-transform-wrapper,
+.fabric-canvas-host .react-transform-component-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+/* The Fabric — sandbox agent motion (CSS instead of Framer to avoid unhandled animation rejections) */
+@keyframes fabric-sandbox-glow-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.85;
+  }
+}
+
+@keyframes fabric-sandbox-avatar-drift {
+  0%,
+  100% {
+    transform: translate(0px, 0px);
+  }
+  22% {
+    transform: translate(14px, 10px);
+  }
+  44% {
+    transform: translate(-8px, -6px);
+  }
+  66% {
+    transform: translate(6px, 8px);
+  }
+  88% {
+    transform: translate(-4px, 4px);
+  }
+}
+
+.fabric-sandbox-glow {
+  animation: fabric-sandbox-glow-pulse 3.2s ease-in-out infinite;
+}
+
+.fabric-sandbox-avatar {
+  animation-name: fabric-sandbox-avatar-drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Mechanical agents — limbs pivot at shoulder/hip (0,0); container never rotates (only scaleX on .fabric-mech-face) */
+.fabric-mech-svg .fabric-mech-arm-l,
+.fabric-mech-svg .fabric-mech-arm-r,
+.fabric-mech-svg .fabric-mech-leg-l,
+.fabric-mech-svg .fabric-mech-leg-r {
+  transform-origin: 0 0;
+  transform-box: fill-box;
+}
+
+.fabric-mech-svg .fabric-mech-arm-l,
+.fabric-mech-svg .fabric-mech-arm-r,
+.fabric-mech-svg .fabric-mech-leg-l,
+.fabric-mech-svg .fabric-mech-leg-r {
+  transform: rotate(0deg);
+}
+
+@keyframes fabric-mech-leg-l-walk {
+  0%,
+  100% {
+    transform: rotate(-20deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+}
+
+@keyframes fabric-mech-leg-r-walk {
+  0%,
+  100% {
+    transform: rotate(20deg);
+  }
+  50% {
+    transform: rotate(-20deg);
+  }
+}
+
+@keyframes fabric-mech-arm-l-walk {
+  0%,
+  100% {
+    transform: rotate(12deg);
+  }
+  50% {
+    transform: rotate(-12deg);
+  }
+}
+
+@keyframes fabric-mech-arm-r-walk {
+  0%,
+  100% {
+    transform: rotate(-12deg);
+  }
+  50% {
+    transform: rotate(12deg);
+  }
+}
+
+.fabric-robot-walking .fabric-mech-leg-l {
+  animation: fabric-mech-leg-l-walk 0.36s linear infinite;
+}
+
+.fabric-robot-walking .fabric-mech-leg-r {
+  animation: fabric-mech-leg-r-walk 0.36s linear infinite;
+}
+
+.fabric-robot-walking .fabric-mech-arm-l {
+  animation: fabric-mech-arm-l-walk 0.36s linear infinite;
+}
+
+.fabric-robot-walking .fabric-mech-arm-r {
+  animation: fabric-mech-arm-r-walk 0.36s linear infinite;
+}
+/* The Factory — center canvas: red/black gradient + tech / blueprint grid */
+.fabric-canvas-host.fabric-canvas-surface {
+  position: relative;
+  isolation: isolate;
+  background-color: #050308;
+  background-image:
+    radial-gradient(ellipse 95% 72% at 50% 6%, rgba(185, 28, 28, 0.44) 0%, rgba(55, 12, 18, 0.5) 40%, transparent 65%),
+    linear-gradient(168deg, rgba(127, 29, 29, 0.22) 0%, transparent 48%),
+    linear-gradient(180deg, #100608 0%, #030305 52%, #010102 100%);
+  box-shadow:
+    inset 0 0 90px rgba(0, 0, 0, 0.72),
+    inset 0 0 140px rgba(127, 29, 29, 0.09);
+}
+
+.fabric-canvas-host.fabric-canvas-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background-image:
+    repeating-linear-gradient(
+      60deg,
+      transparent 0,
+      transparent 13px,
+      rgba(248, 113, 113, 0.075) 13px,
+      rgba(248, 113, 113, 0.075) 14px
+    ),
+    repeating-linear-gradient(
+      -60deg,
+      transparent 0,
+      transparent 13px,
+      rgba(96, 165, 250, 0.055) 13px,
+      rgba(96, 165, 250, 0.055) 14px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: auto, auto, 20px 20px, 20px 20px;
+  mix-blend-mode: screen;
+}
