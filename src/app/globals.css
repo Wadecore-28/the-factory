@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 
 @theme {
@@ -351,6 +351,82 @@ body {
 .fabric-robot-walking .fabric-mech-arm-r {
   animation: fabric-mech-arm-r-walk 0.36s linear infinite;
 }
+
+/* Non–Eugene agents: busier gait + idle micro-motion on the SVG */
+@keyframes fabric-mech-svg-idle-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.fabric-mech-svg-idle {
+  animation: fabric-mech-svg-idle-bob 2.3s ease-in-out infinite;
+}
+
+.fabric-mech-face-shell {
+  transform-style: preserve-3d;
+}
+
+@keyframes fabric-mech-leg-l-walk-hectic {
+  0%,
+  100% {
+    transform: rotate(-32deg);
+  }
+  50% {
+    transform: rotate(32deg);
+  }
+}
+
+@keyframes fabric-mech-leg-r-walk-hectic {
+  0%,
+  100% {
+    transform: rotate(32deg);
+  }
+  50% {
+    transform: rotate(-32deg);
+  }
+}
+
+@keyframes fabric-mech-arm-l-walk-hectic {
+  0%,
+  100% {
+    transform: rotate(18deg);
+  }
+  50% {
+    transform: rotate(-18deg);
+  }
+}
+
+@keyframes fabric-mech-arm-r-walk-hectic {
+  0%,
+  100% {
+    transform: rotate(-18deg);
+  }
+  50% {
+    transform: rotate(18deg);
+  }
+}
+
+.fabric-mech-hectic.fabric-robot-walking .fabric-mech-leg-l {
+  animation: fabric-mech-leg-l-walk-hectic 0.28s linear infinite;
+}
+
+.fabric-mech-hectic.fabric-robot-walking .fabric-mech-leg-r {
+  animation: fabric-mech-leg-r-walk-hectic 0.28s linear infinite;
+}
+
+.fabric-mech-hectic.fabric-robot-walking .fabric-mech-arm-l {
+  animation: fabric-mech-arm-l-walk-hectic 0.28s linear infinite;
+}
+
+.fabric-mech-hectic.fabric-robot-walking .fabric-mech-arm-r {
+  animation: fabric-mech-arm-r-walk-hectic 0.28s linear infinite;
+}
+
 /* The Factory — center canvas: red/black gradient + tech / blueprint grid */
 .fabric-canvas-host.fabric-canvas-surface {
   position: relative;
@@ -391,4 +467,79 @@ body {
     linear-gradient(0deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
   background-size: auto, auto, 20px 20px, 20px 20px;
   mix-blend-mode: screen;
+}
+
+/* The Factory — thematic room interiors */
+@keyframes fabric-room-led-blink {
+  0%,
+  100% {
+    opacity: 0.28;
+    filter: brightness(0.75);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1.35);
+  }
+}
+
+.fabric-room-led {
+  animation: fabric-room-led-blink 1.35s ease-in-out infinite;
+}
+
+.fabric-room-led:nth-child(4n + 1) {
+  animation-delay: 0s;
+}
+.fabric-room-led:nth-child(4n + 2) {
+  animation-delay: 0.22s;
+}
+.fabric-room-led:nth-child(4n + 3) {
+  animation-delay: 0.44s;
+}
+.fabric-room-led:nth-child(4n) {
+  animation-delay: 0.66s;
+}
+
+@keyframes fabric-room-matrix-scroll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-42%);
+  }
+}
+
+.fabric-room-matrix {
+  animation: fabric-room-matrix-scroll 7s linear infinite;
+}
+
+@keyframes fabric-room-radar-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.fabric-room-radar-sweep {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg 300deg,
+    rgba(34, 197, 94, 0.38) 300deg 348deg,
+    transparent 348deg 360deg
+  );
+  animation: fabric-room-radar-spin 2.6s linear infinite;
+}
+
+@keyframes fabric-room-text-drift {
+  0%,
+  100% {
+    opacity: 0.22;
+    transform: translate(0, 0);
+  }
+  50% {
+    opacity: 0.48;
+    transform: translate(3px, -5px);
+  }
+}
+
+.fabric-room-text-bit {
+  animation: fabric-room-text-drift 4.5s ease-in-out infinite;
 }

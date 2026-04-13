@@ -88,14 +88,14 @@ const MOCK_AGENTS: Record<string, FabricAgentProfile> = {
 };
 
 const WORKSPACE_CELLS: WorkspaceCell[] = [
-  { id: "w1", name: "EUGENE", color: "#dc2626", agentKey: "eugene" },
-  { id: "w2", name: "NEXUS-3", color: "#a855f7", agentKey: "nexus" },
-  { id: "w3", name: "FORGE", color: "#22c55e", agentKey: "forge" },
-  { id: "w4", name: "SPARK", color: "#eab308", agentKey: "spark" },
-  { id: "w5", name: "VOID", color: "#06b6d4", agentKey: "void_" },
-  { id: "w6", name: "PULSE", color: "#f97316", agentKey: "pulse" },
-  { id: "w7", name: "SLOT 7", color: "#64748b", agentKey: null },
-  { id: "w8", name: "SLOT 8", color: "#78716c", agentKey: null },
+  { id: "w1", name: "EUGENE", color: "#dc2626", agentKey: "eugene", role: "manager" },
+  { id: "w2", name: "NEXUS-3", color: "#a855f7", agentKey: "nexus", role: "creator" },
+  { id: "w3", name: "FORGE", color: "#22c55e", agentKey: "forge", role: "researcher" },
+  { id: "w4", name: "SPARK", color: "#eab308", agentKey: "spark", role: "wordsmith" },
+  { id: "w5", name: "VOID", color: "#06b6d4", agentKey: "void_", role: "developer" },
+  { id: "w6", name: "PULSE", color: "#f97316", agentKey: "pulse", role: "closer" },
+  { id: "w7", name: "SLOT 7", color: "#64748b", agentKey: null, role: null },
+  { id: "w8", name: "SLOT 8", color: "#78716c", agentKey: null, role: null },
 ];
 
 function formatMoney(usd: number) {
